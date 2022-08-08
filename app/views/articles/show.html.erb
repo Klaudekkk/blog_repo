@@ -13,8 +13,8 @@
             <p class="title is-4 has-text-centered"><%= @article.title %></p>
             <div class="content has-text-centered">
               <p><%= @article.description %></p>
-              <%= button_to "Edit", edit_article_path(@article), class: "button is-warning" %>
-              <%= button_to "Delete", article_path(@article.id), class: "button is-danger", method: :delete, method: :delete, onclick: "return confirm('Are you sure?')" %>
+              <%= button_to "Edit", edit_article_path(@article), class: "button is-warning", method: :get %>
+              <%= button_to "Delete", article_path(@article.id), class: "button is-danger", method: :delete, onclick: "return confirm('Are you sure?')" %>
             </div>
           </div>
           <footer class="card-footer  is-justify-content-center">

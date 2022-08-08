@@ -14,7 +14,7 @@
             <div class="content has-text-centered">
               <p><%= article.description %></p>
               <%= button_to "View", article_path(article), method: :get, class: "button is-info" %>
-              <%= button_to "Edit", edit_article_path(article), class: "button is-warning" %>
+              <%= button_to "Edit", edit_article_path(article), method: :get, class: "button is-warning" %>
               <%= button_to "Delete", article_path(article.id), class: "button is-danger", method: :delete, method: :delete, onclick: "return confirm('Are you sure?')" %>
             </div>
           </div>
