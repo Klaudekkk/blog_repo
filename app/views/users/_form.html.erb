@@ -1,0 +1,41 @@
+<%= render 'shared/errors', obj: @user %>
+<!--obj w shared/error to zmienna user-->
+
+
+<div class="container ">
+
+  <div class="columns is-justify-content-center">
+    <div class="column is-half mt-4 ">
+      <div class="card ">
+
+        <%= form_with(model: @user, local: true, data: { turbo: false }) do |f| %>
+
+          <p>
+            <%= f.label :username %><br/>
+            <%= f.text_field :username %>
+          </p>
+
+          <p>
+            <%= f.label :email %><br/>
+            <%= f.email_field :email %>
+          </p>
+
+          <p>
+            <%= f.label :password %><br/>
+            <%= f.password_field :password %>
+          </p>
+
+          <p>
+            <%= f.submit %>
+          </p>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

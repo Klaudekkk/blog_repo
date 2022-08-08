@@ -1,11 +1,5 @@
-c<% if @article.errors.any? %>
-  <h2>The following errors prevented the article from being saved</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+ <h2>The following errors prevented the article from being saved</h2>
+ <%= render 'shared/errors', obj: @article %>
 <%= form_with(model: @article, local: true, data: { turbo: false })  do |f| %>
 
   <p>
