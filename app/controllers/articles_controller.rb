@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   def create
     # cały obiekt JSON zawarty jest w @article
     @article = Article.new(article_params) #require(:article) odnosi się do scope
-    @article.user = User.first
+    @article.user = current_user #dostepny z application_controller
     if @article.save
       flash[:notice]= "artykul zapisany z sukcesem"
       redirect_to @article #taki sam efekt article_path @article (article w path to nazwa prefixu z konsoli)
