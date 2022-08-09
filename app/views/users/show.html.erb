@@ -1,5 +1,9 @@
 <h1 class="mt-4 is-size-1 has-text-centered"><%= @user.username %>'s profile</h1>
 
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
 <div class="is-flex is-justify-content-center">
 <%= gravatar_for @user, size:200 %>
 </div>>
@@ -8,4 +12,4 @@
   <%= link_to "Edit your profile", edit_user_path(@user), class: "button is-info" %>
 </div>
 
-<%= render 'articles/article', obj: @user.articles %>
+<%= render 'articles/article'%>

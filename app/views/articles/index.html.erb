@@ -1,8 +1,16 @@
 <h1 class="mt-4 is-size-1 has-text-centered">Articles listing page</h1>
 
+<div class="flickr_pagination">
+  <%= will_paginate @article, :container => false %>
+</div>
 
 
-<%= render 'article', obj: @articles  %>
+<%= render 'article' %>
+
+<div class="flickr_pagination mb-4 mt-4">
+  <%= will_paginate @article, :container => false %>
+</div>
+
 <!--<table>-->
 <!--  <thead>-->
 <!--  <tr>-->
