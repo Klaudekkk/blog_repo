@@ -1,35 +1,8 @@
 <h1 class="mt-4 is-size-1 has-text-centered">Articles listing page</h1>
-<div class="container ">
-  <% @articles.each do |article| %>
-    <div class="columns is-justify-content-center">
-      <div class="column is-half mt-4 ">
-        <div class="card ">
-          <header class="card-header ">
-            <p class="card-header-title is-justify-content-center">
-              by <%= article.user.username if article.user%>
-            </p>
-          </header>
-          <div class="card-content ">
-            <p class="title is-4 has-text-centered"><%= article.title %></p>
-            <div class="content has-text-centered">
-              <p><%= article.description %></p>
-              <%= button_to "View", article_path(article), method: :get, class: "button is-info" %>
-              <%= button_to "Edit", edit_article_path(article), method: :get, class: "button is-warning" %>
-              <%= button_to "Delete", article_path(article.id), class: "button is-danger", method: :delete, method: :delete, onclick: "return confirm('Are you sure?')" %>
-            </div>
-          </div>
-          <footer class="card-footer  is-justify-content-center">
-            <div class="content ">
-              <small>Created <%= time_ago_in_words(article.created_at) %> ago
-                edited <%= time_ago_in_words(article.updated_at) %>
-              </small>
-            </div>
-          </footer>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+
+
+
+<%= render 'article', obj: @articles  %>
 <!--<table>-->
 <!--  <thead>-->
 <!--  <tr>-->

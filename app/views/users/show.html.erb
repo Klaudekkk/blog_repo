@@ -1,0 +1,7 @@
+<h1 class="mt-4 is-size-1 has-text-centered"><%= @user.username %>'s profile</h1>
+
+<div class="is-flex is-justify-content-center">
+<%= gravatar_for @user, size:200 %>
+</div>>
+
+<%= render 'articles/article', obj: @user.articles %>
