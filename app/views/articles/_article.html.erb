@@ -5,7 +5,9 @@
         <div class="card ">
           <header class="card-header ">
             <p class="card-header-title is-justify-content-center">
-              by <%= article.user.username if article.user%>
+              <% if article.user   %>
+              by <%=link_to  article.user.username, user_path(article.user)  %>
+                <%end %>
             </p>
           </header>
           <div class="card-content ">

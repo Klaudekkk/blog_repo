@@ -8,6 +8,7 @@
             <p class="card-header-title is-justify-content-center">
               by <%= @article.user.username if  @article.user%>
             </p>
+            <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
           </header>
           <div class="card-content ">
             <p class="title is-4 has-text-centered"><%= @article.title %></p>
