@@ -1,0 +1,31 @@
+<h1 class="mt-4 is-size-1 has-text-centered">Users</h1>
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="columns is-justify-content-center">
+      <div class="column is-half mt-4 ">
+        <div class="card ">
+          <header class="card-header ">
+            <p class="card-header-title is-justify-content-center">
+              by  <%= link_to user.username, user_path(user) %>
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content has-text-centered">
+              <%= link_to gravatar_for(user, size:150), user_path(user) %>
+              <p><%= user.articles.count %> napisane artykuły</p>
+              <p><%= user.email %></p>
+              <%= button_to "View Profile", user_path(user), method: :get, class: "button is-info" %>
+              <%= button_to "Edit", edit_user_path(user), method: :get, class: "button is-warning" %>
+            </div>
+          </div>
+        </div>
+          <footer class="card-footer  is-justify-content-center">
+
+              <small>utworzono konto <%= time_ago_in_words(user.created_at) %></small>
+
+          </footer>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

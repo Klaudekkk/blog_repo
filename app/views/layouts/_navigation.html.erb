@@ -11,29 +11,12 @@
     <div class="navbar-start">
       <%= link_to "Home", root_path, class: "navbar-item" %>
       <%= link_to "Articles", articles_path, class: "navbar-item" %>
-      <a class="navbar-item">
-        Documentation
-      </a>
-
+      <%= link_to "Users", users_path, class: "navbar-item" %>
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
+        <%= link_to "Articles", articles_path, class: "navbar-link" %>
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
+          <%= link_to "Create article", new_article_path, class: "navbar-item" %>
+          <%= link_to "Articles", articles_path, class: "navbar-item" %>
         </div>
       </div>
     </div>
@@ -44,7 +27,7 @@
           <a class="button is-primary">
             <strong>Sign up</strong>
           </a>
-            <%= link_to "Zarejestruj się", signup_path, class: "button is-light" %>
+          <%= link_to "Zarejestruj się", signup_path, class: "button is-light" %>
         </div>
       </div>
     </div>
