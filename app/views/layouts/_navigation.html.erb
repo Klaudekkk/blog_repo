@@ -6,37 +6,44 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <%= link_to "Home", root_path, class: "navbar-item" %>
-      <%= link_to "Articles", articles_path, class: "navbar-item" %>
-      <%= link_to "Users", users_path, class: "navbar-item" %>
       <div class="navbar-item has-dropdown is-hoverable">
         <%= link_to "Articles", articles_path, class: "navbar-link" %>
         <div class="navbar-dropdown">
-          <%= link_to "Create article", new_article_path, class: "navbar-item" %>
+          <% if logged_in? %>
+            <%= link_to "Create article", new_article_path, class: "navbar-item" %>
+          <% end %>
           <%= link_to "Articles", articles_path, class: "navbar-item" %>
+        </div>
+      </div>
+      <%= link_to "Bloggers", users_path, class: "navbar-item" %>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <%= link_to "User["+current_user.username+"]", user_path(current_user), class: "navbar-link" %>
+        <div class="navbar-dropdown">
+          <% if logged_in? %>
+            <%= link_to "Show User", user_path(current_user), class: "navbar-item" %>
+          <% end %>
+          <%= link_to "Edit User", edit_user_path(current_user), class: "navbar-item" %>
         </div>
       </div>
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <% if logged_in? %>
-          <%= link_to current_user.username, user_path(current_user), class: "navbar-item" %>
-        <%end %>
-          <div class="buttons">
-          <% if logged_in? %>
-            <%= button_to 'Log out', logout_path, class: "button is-primary", method: :delete %>
-          <% else %>
-            <%= button_to "Zaloguj się", login_path, method: :get , class: "button is-primary" %>
-            <%= button_to "Zarejestruj się", signup_path, method: :get , class: "button is-light" %>
-          <% end %>
 
-        </div>
+      <div class="buttons">
+        <% if logged_in? %>
+          <%= button_to 'Log out', logout_path, class: "button is-primary", method: :delete %>
+        <% else %>
+          <%= button_to "Zaloguj się", login_path, method: :get, class: "button is-primary" %>
+          <%= button_to "Zarejestruj się", signup_path, method: :get, class: "button is-light" %>
+        <% end %>
+
       </div>
     </div>
+  </div>
   </div>
 </nav>
 
