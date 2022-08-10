@@ -20,8 +20,13 @@
               <p><%= user.articles.count %> napisane artykuły</p>
               <p><%= user.email %></p>
               <%= button_to "View Profile", user_path(user), method: :get, class: "button is-info" %>
-              <% if logged_in? && user == current_user %>
-                <%= button_to "Edit", edit_user_path(user), method: :get, class: "button is-warning" %>
+              <% if logged_in? %>
+                <% if user == current_user %>
+                  <%= button_to "Edit", edit_user_path(user), method: :get, class: "button is-warning" %>
+                <% end %>
+                <% if current_user.admin? %>
+                  <%= button_to "Delete", user_path(user), method: :delete, class: "button is-danger", onclick: "return confirm('Are you sure?')" %>
+                <% end %>
               <% end %>
             </div>
           </div>

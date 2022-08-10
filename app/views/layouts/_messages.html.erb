@@ -1,7 +1,7 @@
 <div class="message">
     <% flash.each do |name, msg| %>
     <button class="delete" method="destroy">x</button>
-      <div class="notification <%= name == "is-danger" ? "is-info" : "is-primary" %> ">
+      <div class="notification <%= name == " is-warning" ? " is-danger" : " is-primary" %> ">
         <%= msg %>
       </div>
     <% end %>
