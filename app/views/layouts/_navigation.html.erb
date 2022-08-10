@@ -19,16 +19,16 @@
         </div>
       </div>
       <%= link_to "Bloggers", users_path, class: "navbar-item" %>
-
+      <% if logged_in? %>
       <div class="navbar-item has-dropdown is-hoverable">
-        <%= link_to "User["+current_user.username+"]", user_path(current_user), class: "navbar-link" %>
+        <%= link_to "User[#{current_user.username}]", user_path(current_user), class: "navbar-link" %>
         <div class="navbar-dropdown">
-          <% if logged_in? %>
             <%= link_to "Show User", user_path(current_user), class: "navbar-item" %>
-          <% end %>
           <%= link_to "Edit User", edit_user_path(current_user), class: "navbar-item" %>
+          <%= button_to 'Delete User', user_path(current_user), class: "navbar-item has-text-danger",method: :delete, onclick: "return confirm('Are you sure?')" %>
         </div>
       </div>
+        <%end %>
     </div>
 
     <div class="navbar-end">

@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
     # !! zmienia zmienną current_user na bool czyli True False
   end
 
+  def require_user
+    if !logged_in?
+      flash[:alert] = "Musisz być zalogowany"
+      redirect_to login_path
+    end
+  end
+
 end
