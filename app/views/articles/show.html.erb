@@ -1,33 +1,35 @@
 <h1 class="mt-4 is-size-1 has-text-centered"><%= @article.title %></h1>
 <div class="container ">
 
-    <div class="columns is-justify-content-center">
-      <div class="column is-half mt-4 ">
-        <div class="card ">
-          <header class="card-header ">
-            <p class="card-header-title is-justify-content-center">
-              by <%= @article.user.username if  @article.user%>
-            </p>
-            <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
-          </header>
-          <div class="card-content ">
-            <p class="title is-4 has-text-centered"><%= @article.title %></p>
-            <div class="content has-text-centered">
-              <p><%= @article.description %></p>
+  <div class="columns is-justify-content-center">
+    <div class="column is-half mt-4 ">
+      <div class="card ">
+        <header class="card-header ">
+          <p class="card-header-title is-justify-content-center">
+            by <%= @article.user.username if @article.user %>
+          </p>
+          <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+        </header>
+        <div class="card-content ">
+          <p class="title is-4 has-text-centered"><%= @article.title %></p>
+          <div class="content has-text-centered">
+            <p><%= @article.description %></p>
+            <% if logged_in? && @article.user == current_user %>
               <%= button_to "Edit", edit_article_path(@article), class: "button is-warning", method: :get %>
               <%= button_to "Delete", article_path(@article.id), class: "button is-danger", method: :delete, onclick: "return confirm('Are you sure?')" %>
-            </div>
+            <% end %>
           </div>
-          <footer class="card-footer  is-justify-content-center">
-            <div class="content ">
-              <small>Created <%= time_ago_in_words(@article.created_at) %> ago
-                edited <%= time_ago_in_words(@article.updated_at) %>
-              </small>
-            </div>
-          </footer>
         </div>
+        <footer class="card-footer  is-justify-content-center">
+          <div class="content ">
+            <small>Created <%= time_ago_in_words(@article.created_at) %> ago
+              edited <%= time_ago_in_words(@article.updated_at) %>
+            </small>
+          </div>
+        </footer>
       </div>
     </div>
+  </div>
 
 </div>
 

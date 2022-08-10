@@ -5,9 +5,9 @@
         <div class="card ">
           <header class="card-header ">
             <p class="card-header-title is-justify-content-center">
-              <% if article.user   %>
-              by <%=link_to  article.user.username, user_path(article.user)  %>
-                <%end %>
+              <% if article.user %>
+                by <%= link_to article.user.username, user_path(article.user) %>
+              <% end %>
             </p>
           </header>
           <div class="card-content ">
@@ -15,8 +15,10 @@
             <div class="content has-text-centered">
               <p><%= article.description %></p>
               <%= button_to "View", article_path(article), method: :get, class: "button is-info" %>
-              <%= button_to "Edit", edit_article_path(article), method: :get, class: "button is-warning" %>
-              <%= button_to "Delete", article_path(article.id), class: "button is-danger", method: :delete,  onclick: "return confirm('Are you sure?')" %>
+              <% if logged_in? && article.user == current_user %>
+                <%= button_to "Edit", edit_article_path(article), method: :get, class: "button is-warning" %>
+                <%= button_to "Delete", article_path(article.id), class: "button is-danger", method: :delete, onclick: "return confirm('Are you sure?')" %>
+              <% end %>
             </div>
           </div>
           <footer class="card-footer  is-justify-content-center">

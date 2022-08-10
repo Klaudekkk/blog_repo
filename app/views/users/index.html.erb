@@ -20,7 +20,9 @@
               <p><%= user.articles.count %> napisane artykuły</p>
               <p><%= user.email %></p>
               <%= button_to "View Profile", user_path(user), method: :get, class: "button is-info" %>
-              <%= button_to "Edit", edit_user_path(user), method: :get, class: "button is-warning" %>
+              <% if logged_in? && user == current_user %>
+                <%= button_to "Edit", edit_user_path(user), method: :get, class: "button is-warning" %>
+              <% end %>
             </div>
           </div>
         </div>
