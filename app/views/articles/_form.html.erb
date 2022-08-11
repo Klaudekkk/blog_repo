@@ -11,6 +11,20 @@
     <%= f.text_area :description %>
   </p>
 
+  <div class="select">
+    <select>
+      <option>Select dropdown</option>
+      <option>With options</option>
+    </select>
+  </div>
+
+  <p>
+    <%= f.label :category %><br/>
+    <%= f.collection_select(:category_ids, Category.all, :id, :name,
+                            {prompt: "Wybierz z listy"}, {multiple: true, size:3, class:"field"}) %>
+  </p>
+
+
   <p>
     <%= f.submit %>
   </p>

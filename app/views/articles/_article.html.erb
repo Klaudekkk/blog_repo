@@ -13,6 +13,12 @@
           <div class="card-content ">
             <p class="title is-4 has-text-centered"><%= article.title %></p>
             <div class="content has-text-centered">
+              <% if article.categories.any? %>
+                <!--            categories, bo tak jest w modelu-->
+                <div class="mt-2 has-text-centered">
+                  <%= render article.categories %>
+                </div>
+              <%end %>
               <p><%= article.description %></p>
               <%= button_to "View", article_path(article), method: :get, class: "button is-info" %>
               <% if logged_in? && (article.user == current_user || current_user.admin?) %>

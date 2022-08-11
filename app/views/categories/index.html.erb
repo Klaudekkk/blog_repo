@@ -10,6 +10,7 @@
         <div class="card ">
           <div class="card-content ">
             <p class="title is-4 has-text-centered"><%= link_to category.name, category_path(category) %></p>
+            <p class="card-text has-text-centered"><%= pluralize(category.articles.count, "article") %></p>
           </div>
           <footer class="card-footer  is-justify-content-center">
             <div class="content ">

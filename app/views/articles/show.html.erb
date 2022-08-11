@@ -12,6 +12,12 @@
         </header>
         <div class="card-content ">
           <p class="title is-4 has-text-centered"><%= @article.title %></p>
+          <% if @article.categories.any? %>
+            <!--            categories, bo tak jest w modelu-->
+             <div class="mt-2 has-text-centered">
+               <%= render @article.categories %>
+             </div>
+          <%end %>
           <div class="content has-text-centered">
             <p><%= @article.description %></p>
             <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
